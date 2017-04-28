@@ -1,0 +1,10 @@
+
+如何打包：
+mvn clean package  -Dmaven.test.skip=true
+
+
+
+如何部署提交：前提 config.properties\log4j.xml\stormConfig.properties 拷贝到每台机器的 /home/work/jstorm_cluster/jstorm-0.9.6.3/biglog_conf 目录下
+在nimbus节点执行
+cd /home/work/jstorm_cluster/jstorm-0.9.6.3/
+jstorm jar jstorm-hbase-demo-0.1.jar com.xirong.demo.BootStrap config.properties
