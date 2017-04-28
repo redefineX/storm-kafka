@@ -1,7 +1,5 @@
 package com.owner.storm.kafka.serializer;
 
-import com.nl.util.kafka.NLMessage;
-
 import java.nio.charset.Charset;
 
 /**

@@ -4,7 +4,6 @@ import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtobufIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
-import com.nl.util.kafka.NLMessage;
 
 import java.util.HashMap;
 import java.util.Map;

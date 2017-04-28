@@ -14,53 +14,46 @@ import java.util.Map;
  * kafka client
  * Created by admin on 2017/4/27.
  */
-public class ConsumerFactory
-{
-	private static Logger LOG = LoggerFactory.getLogger(ConsumerFactory.class);
+public class ConsumerFactory {
+    private static Logger LOG = LoggerFactory.getLogger(ConsumerFactory.class);
 
-	private KafkaSpoutConfig config;
-	private TopologyContext context;
-	private Map conf;
+    private KafkaSpoutConfig config;
+    private TopologyContext context;
+    private Map conf;
 
-	private Map<Integer, PartitionConsumer> partitionConsumerMap;
-	private List<PartitionConsumer> partitionConsumers;
+    private Map<Integer, PartitionConsumer> partitionConsumerMap;
+    private List<PartitionConsumer> partitionConsumers;
 
-	public ConsumerFactory(Map conf, KafkaSpoutConfig config, TopologyContext context)
-	{
-		this.conf = conf;
-		this.config = config;
-		this.context = context;
-	}
+    public ConsumerFactory(Map conf, KafkaSpoutConfig config, TopologyContext context) {
+        this.conf = conf;
+        this.config = config;
+        this.context = context;
+    }
 
-	public void createConsumerPartition()
-	{
-		partitionConsumerMap = new HashMap<Integer, PartitionConsumer>();
-		partitionConsumers = new LinkedList<PartitionConsumer>();
-		int taskSize = context.getComponentTasks(context.getThisComponentId()).size();
-		LOG.info("consumer factory, task index: {},task size: {},num partition: {}", context.getThisTaskIndex(), taskSize, config.numPartitions);
-		for (int i = context.getThisTaskIndex(); i < config.numPartitions; i += taskSize)
-		{
-			PartitionConsumer partitionConsumer = new PartitionConsumer(conf, config, config.topic, i);
-			partitionConsumers.add(partitionConsumer);
-			partitionConsumerMap.put(i, partitionConsumer);
-		}
+    public void createConsumerPartition() {
+        partitionConsumerMap = new HashMap<Integer, PartitionConsumer>();
+        partitionConsumers = new LinkedList<PartitionConsumer>();
+        int taskSize = context.getComponentTasks(context.getThisComponentId()).size();
+        LOG.info("consumer factory, task index: {},task size: {},num partition: {}", context.getThisTaskIndex(), taskSize, config.numPartitions);
+        for (int i = context.getThisTaskIndex(); i < config.numPartitions; i += taskSize) {
+            PartitionConsumer partitionConsumer = new PartitionConsumer(conf, config, config.topic, i);
+            partitionConsumers.add(partitionConsumer);
+            partitionConsumerMap.put(i, partitionConsumer);
+        }
 
-	}
+    }
 
-	public List<PartitionConsumer> getPartitionConsumers()
-	{
-		return partitionConsumers;
-	}
+    public List<PartitionConsumer> getPartitionConsumers() {
+        return partitionConsumers;
+    }
 
-	public PartitionConsumer getConsumer(int partition)
-	{
-		return partitionConsumerMap.get(partition);
-	}
+    public PartitionConsumer getConsumer(int partition) {
+        return partitionConsumerMap.get(partition);
+    }
 
-	public void removeConsumer(int partition)
-	{
-		PartitionConsumer partitionConsumer = partitionConsumerMap.get(partition);
-		partitionConsumers.remove(partitionConsumer);
-		partitionConsumerMap.remove(partition);
-	}
+    public void removeConsumer(int partition) {
+        PartitionConsumer partitionConsumer = partitionConsumerMap.get(partition);
+        partitionConsumers.remove(partitionConsumer);
+        partitionConsumerMap.remove(partition);
+    }
 }
