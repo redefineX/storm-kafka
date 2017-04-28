@@ -7,15 +7,15 @@ import java.util.Map;
  * Created by napo on 2017/4/28.
  */
 public class NLMessage {
-    private Map header = new HashMap();
+    private Map headers = new HashMap();
     private byte[] body;
 
-    public Map getHeader() {
-        return header;
+    public Map getHeaders() {
+        return headers;
     }
 
-    public void setHeader(Map header) {
-        this.header = header;
+    public void setHeaders(Map headers) {
+        this.headers = headers;
     }
 
     public byte[] getBody() {

@@ -1,7 +1,6 @@
 package com.owner.storm.kafka.serializer;
 
 import com.owner.storm.kafka.serializer.*;
-import com.nl.util.kafka.NLMessage;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Test;
 

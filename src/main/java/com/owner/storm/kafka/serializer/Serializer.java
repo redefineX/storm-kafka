@@ -1,7 +1,5 @@
 package com.owner.storm.kafka.serializer;
 
-import com.nl.util.kafka.NLMessage;
-
 /**
  * Created by admin on 2017/4/28.
  */
