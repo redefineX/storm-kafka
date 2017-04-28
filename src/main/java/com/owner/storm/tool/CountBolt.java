@@ -6,7 +6,6 @@ import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
-import com.owner.storm.HelloWorldBolt;
 import com.owner.storm.kafka.serializer.NLMessage;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.slf4j.Logger;
@@ -19,7 +18,7 @@ import java.util.Map;
  */
 public class CountBolt extends BaseRichBolt
 {
-	private static Logger LOGGER = LoggerFactory.getLogger(HelloWorldBolt.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(CountBolt.class);
 	private OutputCollector outputCollector;
 	private int myCount = 0;
 

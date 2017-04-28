@@ -1,11 +1,9 @@
 package com.owner.storm.tool;
 
 import backtype.storm.Config;
-import backtype.storm.LocalCluster;
 import backtype.storm.StormSubmitter;
 import backtype.storm.generated.StormTopology;
 import backtype.storm.topology.TopologyBuilder;
-import com.owner.storm.HelloWorldBolt;
 import com.owner.storm.kafka.KafkaSpout;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
